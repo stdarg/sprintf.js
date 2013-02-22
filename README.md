@@ -108,5 +108,4 @@ License
 =======
 
 This library is licensed under the `MIT License`__
-
-__ http://www.opensource.org/licenses/mit-license.html
+http://www.opensource.org/licenses/mit-license.html
