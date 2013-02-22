@@ -1,5 +1,5 @@
-A sprintf Javascript implementation
-===================================
+A node.js sprintf implementation
+================================
 
 Note
 ====
