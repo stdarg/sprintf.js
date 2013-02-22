@@ -7,8 +7,8 @@ Note
 This implementation of sprintf.js is from https://github.com/jakobwesthoff/sprintf.js
 and exists here in a "nodified" state with slight modifications.
 
-Please note this implementation of sprintf adds a function 'sprintf' to the global
-scope and places a 'printf' onto the string prototype.
+Please note this implementation of sprintf adds a function ``sprintf`` to the global
+scope and places a ``printf`` and a ``sprintf`` onto the string prototype.
 
 Installation
 ============
@@ -39,6 +39,10 @@ The following datatypes are supported:
     An octal number
 %s:
     A string
+%S:
+    A string (all upper case)
+%t:
+    A string (all lower case)
 %x:
     A hexadecimal number (lowercase characters)
 %X:
@@ -83,11 +87,18 @@ You may either use the global function ``sprintf`` which returns the newly
 formatted string if supplied with the format string, as well as all needed
 arguments::
 
-    var formatted = sprintf("The number is %.2f", number);
+    var formatted = sprintf('The number is %.2f', number);
 
-Or you may use the ``printf`` method directly on the format string::
+You may use the string prototype's ``sprintf`` method directly on the format string::
 
-    var formatted = "The number is %.2f".printf(number);
+    var formatted = 'The number is %.2f'.sprintf(number);
+
+Finally, you can use the string prototype's ``printf`` to display the formatted
+output to standard out::
+
+    'I like %s, a lot'.printf('ducks');
+    var text = 'There are %d geese';
+    text.printf(22);
 
 Internally the exactly the same processing takes place. Therefore you may
 decide freely which syntax you like better.
