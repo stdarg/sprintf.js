@@ -1,14 +1,36 @@
-lib-cov
-*.seed
+# ignore node.js modules
+node_modules
+.node_modules
+node_modules/
+
+# ignore Apple DS Store
+*.DS_Store
+
+# ignore IntelliJ project files
+*.idea
+*.iml
+\#*\#
+
+# ignore the log directry
+logs/
+
+# ignore log files
 *.log
-*.csv
-*.dat
-*.out
+
+# ignore swap files
+*.swp
+
+# ignore tags file
+tags
+
+# emacs turds
+*~
+
+# pid files
 *.pid
-*.gz
 
-pids
-logs
-results
+# C temp files
+*.[oa]
 
-npm-debug.log
+# git files
+.git*
