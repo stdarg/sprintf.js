@@ -23,30 +23,18 @@ function known from the standard c library.
 
 The following datatypes are supported:
 
-%%:
-    A literal percent sign
-%b:
-    A binary number
-%c:
-    An ASCII character represented by the given value
-%d:
-    A signed decimal number
-%f:
-    A floating point value
-%j:
-    A Javascript object (representated as JSON)
-%o:
-    An octal number
-%s:
-    A string
-%S:
-    A string (all upper case)
-%t:
-    A string (all lower case)
-%x:
-    A hexadecimal number (lowercase characters)
-%X:
-    A hexadecimal number (uppercase characters)
+* %%: A literal percent sign
+* %b: A binary number
+* %c: An ASCII character represented by the given value
+* %d: A signed decimal number
+* %f: A floating point value
+* %j: A Javascript object (representated as JSON)
+* %o: An octal number
+* %s: A string
+* %S: A string (all upper case)
+* %t: A string (all lower case)
+* %x: A hexadecimal number (lowercase characters)
+* %X: A hexadecimal number (uppercase characters)
 
 
 All of the usual formatting flags are supported as well. Therefore you may
