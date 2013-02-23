@@ -1,3 +1,10 @@
+0.0.4 / 2013-02-22
+==================
+  * Added support for %S (uppercase) and %t (lower case)
+  * Added illustrative examples for casing.
+  * Remove all 'throw' statements.
+
+
 0.0.3 / 2013-02-22
 ==================
   * Added %j format descriptor to display Javascript object
