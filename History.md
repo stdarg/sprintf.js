@@ -1,3 +1,7 @@
+0.0.5 / 2013-03-03
+==================
+ * Fixed a bug where undefined values would cause an exception
+
 0.0.4 / 2013-02-22
 ==================
   * Added support for %S (uppercase) and %t (lower case)
