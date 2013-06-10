@@ -14,7 +14,8 @@
           "type" : "MIT"
         , "url" : "http://opensource.org/licenses/MIT" } ]
     , "main" : "./lib/sprintf.js"
+    , "scripts" : { "test" : "./node_modules/.bin/mocha --reporter list" }
     , "engines" : { "node" : ">=v0.6.0" }
     , "dependencies" : { }
-    , "devDependencies" : { }
+    , "devDependencies" : { "mocha" : "1.9.0" }
 }
