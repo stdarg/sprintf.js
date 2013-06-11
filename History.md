@@ -1,3 +1,11 @@
+0.0.7 / 2013-06-10
+==================
+* Fixed bug with sprintf('%4d', -44) returning '- 44', when it should be ' -44'
+
+0.0.6 / 2013-06-10
+==================
+* Added mocha tests
+
 0.0.5 / 2013-03-03
 ==================
  * Fixed a bug where undefined values would cause an exception
