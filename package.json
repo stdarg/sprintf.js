@@ -1,6 +1,6 @@
 {
       "name" : "sprintf.js"
-    , "version" : "0.0.7"
+    , "version" : "0.0.8"
     , "description" : "This library does provide an almost complete reimplementation of the sprintf function known from the standard c library."
     , "tags" : [ "utilities", "JavaScript", "node.js", "validation", "type", "checking" ]
     , "author" : "Jakob Westhoff <jakob@westhoffswelt.de>"

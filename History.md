@@ -1,3 +1,7 @@
+0.0.8 / 2013-06-11
+==================
+* Fixed bug where tokens were not properly consumed with '%%'
+
 0.0.7 / 2013-06-10
 ==================
 * Fixed bug with sprintf('%4d', -44) returning '- 44', when it should be ' -44'

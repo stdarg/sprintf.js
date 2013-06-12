@@ -39,7 +39,7 @@ The following datatypes are supported:
 
 All of the usual formatting flags are supported as well. Therefore you may
 specify the algebraic sign, padding, alignment, width and precision. The syntax
-is equivalent to the one used by the sprintf c function.
+is roughly equivalent to the one used by the sprintf c function.
 
 
 Usage
@@ -91,6 +91,14 @@ output to standard out::
 Internally the exactly the same processing takes place. Therefore you may
 decide freely which syntax you like better.
 
+Note
+====
+
+This code uses JavaScript Regular Expressions, so I would not use it in anything that is called
+a massively in short period of time. A side-effect of using regular expressions to match the format
+descriptors is that '%' by itself is not recognized as a valid format descriptor (because it isn't).
+
+Later, I'll re-write this to not use regular expressions.
 
 License
 =======
