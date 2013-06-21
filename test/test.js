@@ -384,3 +384,11 @@ describe('sprintf()', function() {
         assert.equal('%0 and woot', sprintf('%%%d and %s', 1-1, 'woot'));
     });
 });
+
+describe('sprintf()', function() {
+    it('Should return "1, 2 and 3" when the format is "%d, %d and %d" and the args are: '+
+    '2-1, 4/2, 1.5*2',
+       function() {
+        assert.equal('1, 2 and 3', sprintf('%d, %d and %d', 2-1, 4/2, 1.5*2));
+    });
+});
