@@ -259,6 +259,12 @@ describe('sprintf()', function() {
 });
 
 describe('sprintf()', function() {
+    it('Should return "X" when the format is "%C" and the arg is: "x"', function() {
+        assert.equal('X', sprintf('%C', 'x'));
+    });
+});
+
+describe('sprintf()', function() {
     it('Should return "x" when the format is "%c" and the arg is: 120', function() {
         assert.equal('x', sprintf('%c', 120));
     });
@@ -327,5 +333,54 @@ describe('sprintf()', function() {
 describe('sprintf()', function() {
     it('Should return "10" when the format is "%u" and the arg is: -10', function() {
         assert.equal('10', sprintf('%u', -10));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10.4" when the format is "%f" and the arg is: 10.4', function() {
+        assert.equal('10.4', sprintf('%f', 10.4));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10.4" when the format is "%F" and the arg is: 10.4', function() {
+        assert.equal('10.4', sprintf('%f', 10.4));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "Infinity" when the format is "%f" and the arg is: 2/0', function() {
+        assert.equal('Infinity', sprintf('%f', 2/0));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "INFINITY" when the format is "%F" and the arg is: 2/0', function() {
+        assert.equal('INFINITY', sprintf('%F', 2/0));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "NAN" when the format is "%D" and the arg is: "a"/2', function() {
+        assert.equal('NAN', sprintf('%D', 'a'/2));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "NaN" when the format is "%d" and the arg is: "a"/2', function() {
+        assert.equal('NaN', sprintf('%d', 'a'/2));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "NaN" when the format is "%d" and the arg is: "a"/2', function() {
+        assert.equal('NaN', sprintf('%d', 'a'/2));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "%0 and woot" when the format is "%%%d and %s" and the args are: 0, "woot"',
+       function() {
+        assert.equal('%0 and woot', sprintf('%%%d and %s', 1-1, 'woot'));
     });
 });
