@@ -33,6 +33,37 @@ describe('sprintf()', function() {
 });
 
 describe('sprintf()', function() {
+    it('Should return "" when the format is "%n" and the arg is 0', function() {
+        assert.equal('', sprintf('%n', 0));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "" when the format is "%p" and the arg is 0', function() {
+        assert.equal('', sprintf('%p', 0));
+    });
+});
+
+
+describe('sprintf()', function() {
+    it('Should return "A.30A3D70A3D708" when the format is "%12A" and the arg is: 10.19', function() {
+        assert.equal('A.30A3D70A3D708', sprintf('%12A', 10.19));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "a.30a3d70a3d708" when the format is "%12a" and the arg is: 10.19', function() {
+        assert.equal('a.30a3d70a3d708', sprintf('%12a', 10.19));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return " a.30a3d70a3d708" when the format is "%16a" and the arg is: 10.19', function() {
+        assert.equal(' a.30a3d70a3d708', sprintf('%16a', 10.19));
+    });
+});
+
+describe('sprintf()', function() {
     it('Should return "A.30A3D70A3D708" when the format is "%12A" and the arg is: 10.19', function() {
         assert.equal('A.30A3D70A3D708', sprintf('%12A', 10.19));
     });
@@ -260,5 +291,41 @@ describe('sprintf()', function() {
 describe('sprintf()', function() {
     it('Should return "a" when the format is "%x" and the arg is: 10', function() {
         assert.equal('a', sprintf('%x', 10));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10" when the format is "%d" and the arg is: 10', function() {
+        assert.equal('10', sprintf('%d', 10));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10" when the format is "%d" and the arg is: "10"', function() {
+        assert.equal('10', sprintf('%d', '10'));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "-10" when the format is "%d" and the arg is: "-10"', function() {
+        assert.equal('-10', sprintf('%d', '-10'));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10" when the format is "%i" and the arg is: 10', function() {
+        assert.equal('10', sprintf('%i', 10));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10" when the format is "%u" and the arg is: 10', function() {
+        assert.equal('10', sprintf('%u', 10));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "10" when the format is "%u" and the arg is: -10', function() {
+        assert.equal('10', sprintf('%u', -10));
     });
 });
