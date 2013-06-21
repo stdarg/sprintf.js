@@ -1,3 +1,8 @@
+0.1.0 / 2013-06-20
+==================
+* Removed reg-ex based parser. Replaced with real parser.
+* Added full set of C-like printf format descriptors. Some, like %p do nothing.
+
 0.0.8 / 2013-06-11
 ==================
 * Fixed bug where tokens were not properly consumed with '%%'
