@@ -1,9 +1,9 @@
 {
       "name" : "sprintf.js"
-    , "version" : "0.0.8"
+    , "version" : "0.1.0"
     , "description" : "This library does provide an almost complete reimplementation of the sprintf function known from the standard c library."
     , "tags" : [ "utilities", "JavaScript", "node.js", "validation", "type", "checking" ]
-    , "author" : "Jakob Westhoff <jakob@westhoffswelt.de>"
+    , "author" : "Edmond Meinfelder <git@stdarg.com>"
     , "maintainers" : "Edmond Meinfelder <edmond@stdarg.com>"
     , "homepage" : "https://github.com/stdarg/sprintf.js"
     , "repository" : {
