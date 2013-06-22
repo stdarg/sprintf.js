@@ -39,7 +39,7 @@ Flags can be in any order.
 <tr><td>+</td>       <td>Signed numbers will always be printed with a leading sign (+ or -).</td></tr>
 <tr><td>space</td>   <td>Positive numbers are preceded by a space (negative numbers by a - sign).</td></tr>
 <tr><td>0</td>       <td>For numeric conversions, pad with leading zeros to the field width.</td></tr>
-<tr><td>#</td>       <td>An alternative output form. For o, the first digit will be '0'. For x or X, "0x" or "0X" will be prefixed to a non-zero result. For e, E, f, F, g and G, the output will always have a decimal point; for g and G, trailing zeros will not be removed.</td></tr>
+<tr><td>#</td>       <td>An alternative output form. For o, the first digit will be '0'. For x or X, "0x" or "0X". For b or B, "b" or "B" will be prefixed to a non-zero result. For e, E, f, F, g and G, the output will always have a decimal point; for g and G, trailing zeros will not be removed.</td></tr>
 </table>
 
 
@@ -62,8 +62,7 @@ If the precision is specified as *, the value is computed from the next argument
 
 ### Length modifier
 
-Length has no meaning in JavaScript - all numbers have the same length - 64 bits. It is possible to do some emulation of what C does, but I can't think a good reason to do so.
-Right now, the length modifier is parsed, but does nothing.
+Length has no meaning in JavaScript - all numbers have the same length - 64 bits. It is possible to emulate what C does, but I can't think a good reason to do so. Right now, the length modifier is parsed, but does nothing.
 
 <table>
 <tr><td><b>Character<b></td><td><b>Meaning</b></td></tr>
@@ -77,13 +76,14 @@ Right now, the length modifier is parsed, but does nothing.
 <tr><td><b>Character</b></td><td><b>Meaning</b></td></tr>
 <tr><td>d, i</td>          <td>Display an int in signed decimal notation.</td></tr>
 <tr><td>o</td>             <td>Display an int in unsigned octal notation (without a leading 0).</td></tr>
+<tr><td>b, B</td>          <td>Display an int in unsigned binary notation (without a leading b or B).</td></tr>
 <tr><td>u</td>             <td>Display an int in unsigned decimal notation.</td></tr>
 <tr><td>x, X</td>          <td>Display an int in unsigned hexadecimal notation (without a leading 0x or 0X). x gives lower case output, X upper case. cDisplay a single char (after conversion to unsigned int).</td></tr>
 <tr><td> e, E</td>         <td>Display a double or float (after conversion to double) in scientific notation. e gives lower case output, E upper case.</td></tr>
 <tr><td>f</td>             <td>Display a double or float (after conversion to double) in decimal notation.</td></tr>
 <tr><td>g, G</td>          <td>g is either e or f, chosen automatically depending on the size of the value and the precision specified. G is similar, but is either E or f.</td></tr>
-<tr><td>n</td>             <td>Nothing is displayed. The corresponding argument must be a pointer to an int variable. The number of characters converted so far is assigned to this variable.</td></tr>
-<tr><td>s</td>             <td>Display a string. The argument is a pointer to char. Characters are displayed until a '\0' is encountered, or until the number of characters indicated by the precision have been displayed. (The terminating '\0' is not output.)</td></tr>
+<tr><td>n</td>             <td>Nothing is displayed. The corresponding argument must be an object. The number of characters written so far is assigned to a property name ``sprintf_n``.</td></tr>
+<tr><td>s, S, t</td>       <td>Display a string. The argument is a pointer to char. Characters are displayed until a '\0' is encountered, or until the number of characters indicated by the precision have been displayed. S forces all uppercase, t forces all lowercase while s does no case modification.</td></tr>
 <tr><td>p</td>             <td>Display a pointer (to any type). The representation is implementation dependent.</td></tr>
 <tr><td>%</td>             <td>Display the % character.</td></tr>
 </table>
@@ -140,10 +140,10 @@ decide freely which syntax you like better.
 Note
 ====
 
-This code no longer uses JavaScript Regular Expressions, so I would not use it in anything that is called
+Though this code no longer uses JavaScript Regular Expressions, I would still not use it in anything that is called
 a massively in short period of time. It's a lot of work to pretty-print some data.
 
 License
 =======
 
-This code is licensed under the [`MIT License`](http://www.opensource.org/licenses/mit-license.html "Link to the MIT License").
+This code is under the [`MIT License`](http://www.opensource.org/licenses/mit-license.html "Link to the MIT License").

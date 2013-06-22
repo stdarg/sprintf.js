@@ -199,7 +199,7 @@ describe('sprintf()', function() {
 });
 
 describe('sprintf()', function() {
-    it('Should return "     -0001" when the format is "%+10.4d" and the arg is: -1.19', function() {
+    it('Should return "     -0001" when the format is "%0+10.4d" and the arg is: -1.19', function() {
         assert.equal('-000000001', sprintf('%0+10.4d', -1.19));
     });
 });
@@ -390,5 +390,14 @@ describe('sprintf()', function() {
     '2-1, 4/2, 1.5*2',
        function() {
         assert.equal('1, 2 and 3', sprintf('%d, %d and %d', 2-1, 4/2, 1.5*2));
+    });
+});
+
+describe('sprintf()', function() {
+    it('Should return "%0, hello"" when the format is "%%%d, %s%n" and the args are: '+
+      '0,"hello",r', function() {
+        var r = {};
+        assert.equal('%0, hello', sprintf('%%%d, %s%n', 0, 'hello', r));
+        assert.equal(r.sprintf_n, 9);
     });
 });
