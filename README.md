@@ -4,11 +4,11 @@ A node.js sprintf implementation
 Note
 ====
 
-This implementation of sprintf.js is from https://github.com/jakobwesthoff/sprintf.js
-and exists here in a "nodified" state with slight modifications.
+This implementation of sprintf.js is no longer from https://github.com/jakobwesthoff/sprintf.js
+A new parser has been written enabling the format descriptors to be a bit more "C"-like.
 
-Please note this implementation of sprintf adds a function ``sprintf`` to the global
-scope and places a ``printf`` and a ``sprintf`` onto the string prototype.
+Please note this implementation of sprintf adds a functions ``printf`` and ``sprintf`` to the global
+scope and places ``printf`` and a ``sprintf`` onto the string prototype.
 
 Installation
 ============
@@ -18,35 +18,82 @@ Installation
 Capabilities
 ============
 
-This library does provide an almost complete reimplementation of the sprintf
-function known from the standard c library.
+This library does provide an almost complete reimplementation of the sprintf and printf
+functions from the standard C library. All options from the C format strings are valid,
+however where there is no corresponding functionality in JavaScript, there is no corresponding
+functionlaity in sprintf.js (it's not error, but there is no functionality).
 
-The following datatypes are supported:
+The format string is of the form:
 
-* %%: A literal percent sign
-* %b: A binary number
-* %c: An ASCII character represented by the given value
-* %d: A signed decimal number
-* %f: A floating point value
-* %j: A Javascript object (representated as JSON)
-* %o: An octal number
-* %s: A string
-* %S: A string (all upper case)
-* %t: A string (all lower case)
-* %x: A hexadecimal number (lowercase characters)
-* %X: A hexadecimal number (uppercase characters)
+    % [flags] [field_width] [.precision] [length_modifier] conversion_character
+
+Components in brackets [] are optional. The minimum is a % and a conversion character (e.g. %d).
+
+### Flags
+Flags can be in any order.
 
 
-All of the usual formatting flags are supported as well. Therefore you may
-specify the algebraic sign, padding, alignment, width and precision. The syntax
-is roughly equivalent to the one used by the sprintf c function.
+<table>
+<tr><td><b>Flag</b></td> <td><b>Meaning</b></td></tr>
+<tr><td>-</td>       <td>The output is left justified in its field, not right justified (the default).</td></tr>
+<tr><td>+</td>       <td>Signed numbers will always be printed with a leading sign (+ or -).</td></tr>
+<tr><td>space</td>   <td>Positive numbers are preceded by a space (negative numbers by a - sign).</td></tr>
+<tr><td>0</td>       <td>For numeric conversions, pad with leading zeros to the field width.</td></tr>
+<tr><td>#</td>       <td>An alternative output form. For o, the first digit will be '0'. For x or X, "0x" or "0X" will be prefixed to a non-zero result. For e, E, f, F, g and G, the output will always have a decimal point; for g and G, trailing zeros will not be removed.</td></tr>
+</table>
+
+
+### Field width
+The converted argument will be printed in a field at least this wide, and wider if necessary. If the converted argument has fewer characters than the field width, it will be padded on the left (or right, if left adjustment has been requested) to make up the field width. The padding character is normally ' '(space), but is '0' if the zero padding flag (0) is present.
+If the field width is specified as *, the value is computed from the next argument, which must be an int.
+
+### Precision
+A dot '.' separates the field width from the precision.
+If the precision is specified as *, the value is computed from the next argument, which must be an int.
+
+<table>
+<tr>  <td><b>Conversion</b></td><td><b>Meanings</b></td>
+<tr>  <td>s</td>                <td>The maximum number of characters to be printed from the string.</td></tr>
+<tr>  <td>e, E, f</td>          <td>The number of digits to be printed after the decimal point.</td></tr>
+<tr>  <td>g, G</td>             <td>The number of significant digits.</td></tr>
+<tr>  <td>d, i, o, u, x, X</td> <td>The minimum number of digits to be printed. Leading zeros will be added to make up the field width.</td></tr>
+</table>
+
+
+### Length modifier
+
+Length has no meaning in JavaScript - all numbers have the same length - 64 bits. It is possible to do some emulation of what C does, but I can't think a good reason to do so.
+Right now, the length modifier is parsed, but does nothing.
+
+<table>
+<tr><td><b>Character<b></td><td><b>Meaning</b></td></tr>
+<tr><td>h</td>             <td>The value is to be displayed as a short or unsigned short.</td></tr>
+<tr><td>l</td>             <td>For d, i, o, u, x or X conversions: the argument is a long, not an int.</td></tr>
+<tr><td>L</td>             <td>For e, f, g or G conversions: the argument is a long double.</td></tr>
+</table>
+
+### Conversion character
+<table>
+<tr><td><b>Character</b></td><td><b>Meaning</b></td></tr>
+<tr><td>d, i</td>          <td>Display an int in signed decimal notation.</td></tr>
+<tr><td>o</td>             <td>Display an int in unsigned octal notation (without a leading 0).</td></tr>
+<tr><td>u</td>             <td>Display an int in unsigned decimal notation.</td></tr>
+<tr><td>x, X</td>          <td>Display an int in unsigned hexadecimal notation (without a leading 0x or 0X). x gives lower case output, X upper case. cDisplay a single char (after conversion to unsigned int).</td></tr>
+<tr><td> e, E</td>         <td>Display a double or float (after conversion to double) in scientific notation. e gives lower case output, E upper case.</td></tr>
+<tr><td>f</td>             <td>Display a double or float (after conversion to double) in decimal notation.</td></tr>
+<tr><td>g, G</td>          <td>g is either e or f, chosen automatically depending on the size of the value and the precision specified. G is similar, but is either E or f.</td></tr>
+<tr><td>n</td>             <td>Nothing is displayed. The corresponding argument must be a pointer to an int variable. The number of characters converted so far is assigned to this variable.</td></tr>
+<tr><td>s</td>             <td>Display a string. The argument is a pointer to char. Characters are displayed until a '\0' is encountered, or until the number of characters indicated by the precision have been displayed. (The terminating '\0' is not output.)</td></tr>
+<tr><td>p</td>             <td>Display a pointer (to any type). The representation is implementation dependent.</td></tr>
+<tr><td>%</td>             <td>Display the % character.</td></tr>
+</table>
 
 
 Usage
 =====
 
 To use, simply require the module and then use the global function ``sprintf`` and
-the string prototype method ``printf``::
+the string prototype method ``printf``:
 
     require('sprintf');
 
@@ -66,14 +113,13 @@ the string prototype method ``printf``::
     var text = sprintf('I have %d %s%s.', values);
 
 
-After the corresponding Javascript file has been loaded, the global function
-``sprintf`` is registered, ready to be called. Furthermore the String object is
-extended with a ``printf`` method. Both of these are different means to execute
-the same functionality.
+After loading the sprintf.js Javascript file, the global functions ``printf`` and
+``sprintf`` are registered and ready for use. Further, the String object is
+extended with a ``printf`` method. 
 
 You may either use the global function ``sprintf`` which returns the newly
 formatted string if supplied with the format string, as well as all needed
-arguments::
+arguments:
 
     var formatted = sprintf('The number is %.2f', number);
 
@@ -82,7 +128,7 @@ You may use the string prototype's ``sprintf`` method directly on the format str
     var formatted = 'The number is %.2f'.sprintf(number);
 
 Finally, you can use the string prototype's ``printf`` to display the formatted
-output to standard out::
+output to standard out:
 
     'I like %s, a lot'.printf('ducks');
     var text = 'There are %d geese';
@@ -94,11 +140,8 @@ decide freely which syntax you like better.
 Note
 ====
 
-This code uses JavaScript Regular Expressions, so I would not use it in anything that is called
-a massively in short period of time. A side-effect of using regular expressions to match the format
-descriptors is that '%' by itself is not recognized as a valid format descriptor (because it isn't).
-
-Later, I'll re-write this to not use regular expressions.
+This code no longer uses JavaScript Regular Expressions, so I would not use it in anything that is called
+a massively in short period of time. It's a lot of work to pretty-print some data.
 
 License
 =======
