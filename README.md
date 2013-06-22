@@ -146,5 +146,4 @@ a massively in short period of time. It's a lot of work to pretty-print some dat
 License
 =======
 
-This library is licensed under the `MIT License`__
-http://www.opensource.org/licenses/mit-license.html
+This code is licensed under the [`MIT License`](http://www.opensource.org/licenses/mit-license.html "Link to the MIT License").
