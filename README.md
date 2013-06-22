@@ -82,6 +82,7 @@ Length has no meaning in JavaScript - all numbers have the same length - 64 bits
 <tr><td> e, E</td>         <td>Display a double or float (after conversion to double) in scientific notation. e gives lower case output, E upper case.</td></tr>
 <tr><td>f</td>             <td>Display a double or float (after conversion to double) in decimal notation.</td></tr>
 <tr><td>g, G</td>          <td>g is either e or f, chosen automatically depending on the size of the value and the precision specified. G is similar, but is either E or f.</td></tr>
+<tr><td>j</td>             <td>Display a JSON object using JSON.stringify.</td></tr>
 <tr><td>n</td>             <td>Nothing is displayed. The corresponding argument must be an object. The number of characters written so far is assigned to a property name ``sprintf_n``.</td></tr>
 <tr><td>s, S, t</td>       <td>Display a string. The argument is a pointer to char. Characters are displayed until a '\0' is encountered, or until the number of characters indicated by the precision have been displayed. S forces all uppercase, t forces all lowercase while s does no case modification.</td></tr>
 <tr><td>p</td>             <td>Display a pointer (to any type). The representation is implementation dependent.</td></tr>
