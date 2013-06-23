@@ -18,9 +18,9 @@ Installation
 Capabilities
 ============
 
-This library provides an almost complete implementation of the sprintf and printf
+This library provides an almost complete implementation of the ``sprintf`` and ``printf``
 functions from the standard C library. All options from the C format strings are valid,
-however where there is no corresponding functionality in JavaScript, nothing happens - 
+however where there is no corresponding functionality in JavaScript, nothing happens -
 it's not error, but there is no functionality.
 
 The format string is of the form:
@@ -97,13 +97,13 @@ the string prototype method ``printf``:
 
     var text = sprintf('Hello %%s, aiformatted number is: %3.2f\n', 22/7);
     process.stdout.write(text);
-    text.printf('Jakob');   // The format string is the text in the string object.
+    printf(text, 'Jakob');   // The format string is the text in the string object.
 
     // we can also do Javascript objects
     var obj = { a: 1, b: 'A string', c: 444.1 };
 
     var text = sprintf('This is an object: %j\n', obj);
-    text.printf();
+    printf(text);
 
     // if the first argument after the format string is an array, and there are no more
     // arguments, it's assumed that array holds the values for the format string.
@@ -113,7 +113,7 @@ the string prototype method ``printf``:
 
 After loading the sprintf.js Javascript file, the global functions ``printf`` and
 ``sprintf`` are registered and ready for use. Further, the String object is
-extended with a ``printf`` method. 
+extended with ``printf`` mnd ``sprintf`` methods.
 
 You may either use the global function ``sprintf`` which returns the newly
 formatted string if supplied with the format string, as well as all needed
@@ -125,7 +125,7 @@ You may use the string prototype's ``sprintf`` method directly on the format str
 
     var formatted = 'The number is %.2f'.sprintf(number);
 
-Finally, you can use the string prototype's ``printf`` to display the formatted
+You can use the string prototype's ``printf`` to display the formatted
 output to standard out:
 
     'I like %s, a lot'.printf('ducks');
