@@ -1,3 +1,7 @@
+0.1.1-3 / 2013-06-20
+==================
+* Documentation fixes.
+
 0.1.0 / 2013-06-20
 ==================
 * Removed reg-ex based parser. Replaced with real parser.
