@@ -7,7 +7,7 @@ Note
 This implementation of sprintf.js is no longer from https://github.com/jakobwesthoff/sprintf.js
 A new parser has been written enabling the format descriptors to be a bit more "C"-like.
 
-Please note this implementation of sprintf adds a functions ``printf`` and ``sprintf`` to the global
+Please note sprintf.js adds the functions ``printf`` and ``sprintf`` to the global
 scope and places ``printf`` and a ``sprintf`` onto the string prototype.
 
 Installation
@@ -18,10 +18,10 @@ Installation
 Capabilities
 ============
 
-This library does provide an almost complete reimplementation of the sprintf and printf
+This library provides an almost complete implementation of the sprintf and printf
 functions from the standard C library. All options from the C format strings are valid,
-however where there is no corresponding functionality in JavaScript, there is no corresponding
-functionlaity in sprintf.js (it's not error, but there is no functionality).
+however where there is no corresponding functionality in JavaScript, nothing happens - 
+it's not error, but there is no functionality.
 
 The format string is of the form:
 
@@ -95,7 +95,7 @@ the string prototype method ``printf``:
 
     require('sprintf');
 
-    var text = sprintf('Hello %%s, a formatted number is: %3.2f\n', 22/7);
+    var text = sprintf('Hello %%s, aiformatted number is: %3.2f\n', 22/7);
     process.stdout.write(text);
     text.printf('Jakob');   // The format string is the text in the string object.
 
