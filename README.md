@@ -32,7 +32,6 @@ Components in brackets [] are optional. The minimum is a % and a conversion char
 ### Flags
 Flags can be in any order.
 
-
 <table>
 <tr><td><b>Flag</b></td> <td><b>Meaning</b></td></tr>
 <tr><td>-</td>       <td>The output is left justified in its field, not right justified (the default).</td></tr>
@@ -42,14 +41,13 @@ Flags can be in any order.
 <tr><td>#</td>       <td>An alternative output form. For o, the first digit will be '0'. For x or X, "0x" or "0X". For b or B, "b" or "B" will be prefixed to a non-zero result. For e, E, f, F, g and G, the output will always have a decimal point; for g and G, trailing zeros will not be removed.</td></tr>
 </table>
 
-
 ### Field width
 The converted argument will be printed in a field at least this wide, and wider if necessary. If the converted argument has fewer characters than the field width, it will be padded on the left (or right, if left adjustment has been requested) to make up the field width. The padding character is normally ' '(space), but is '0' if the zero padding flag (0) is present.
 If the field width is specified as *, the value is computed from the next argument, which must be an int.
 
 ### Precision
 A dot '.' separates the field width from the precision.
-If the precision is specified as *, the value is computed from the next argument, which must be an int.
+If the precision is specified as '*', the value is computed from the next argument, which must be a number. If the number is negative, the sign is dropped and if the number has a fractional component, that is also discarded.
 
 <table>
 <tr>  <td><b>Conversion</b></td><td><b>Meanings</b></td>
@@ -59,10 +57,9 @@ If the precision is specified as *, the value is computed from the next argument
 <tr>  <td>d, i, o, u, x, X</td> <td>The minimum number of digits to be printed. Leading zeros will be added to make up the field width.</td></tr>
 </table>
 
-
 ### Length modifier
 
-Length has no meaning in JavaScript - all numbers have the same length - 64 bits. It is possible to emulate what C does, but I can't think a good reason to do so. Right now, the length modifier is parsed, but does nothing.
+Length has no meaning in JavaScript - all numbers have the same length - 64 bits. It is possible to emulate what C does, but I can't think a good reason to do so. Right now, the length modifier is parsed, but does nothing. Suggestions are welcome, though.
 
 <table>
 <tr><td><b>Character<b></td><td><b>Meaning</b></td></tr>
@@ -79,13 +76,13 @@ Length has no meaning in JavaScript - all numbers have the same length - 64 bits
 <tr><td>b, B</td>          <td>Display an int in unsigned binary notation (without a leading b or B).</td></tr>
 <tr><td>u</td>             <td>Display an int in unsigned decimal notation.</td></tr>
 <tr><td>x, X</td>          <td>Display an int in unsigned hexadecimal notation (without a leading 0x or 0X). x gives lower case output, X upper case. cDisplay a single char (after conversion to unsigned int).</td></tr>
-<tr><td> e, E</td>         <td>Display a double or float (after conversion to double) in scientific notation. e gives lower case output, E upper case.</td></tr>
+<tr><td>e, E</td>          <td>Display a double or float (after conversion to double) in scientific notation. e gives lower case output, E upper case.</td></tr>
 <tr><td>f</td>             <td>Display a double or float (after conversion to double) in decimal notation.</td></tr>
 <tr><td>g, G</td>          <td>g is either e or f, chosen automatically depending on the size of the value and the precision specified. G is similar, but is either E or f.</td></tr>
 <tr><td>j</td>             <td>Display a JSON object using JSON.stringify.</td></tr>
 <tr><td>n</td>             <td>Nothing is displayed. The corresponding argument must be an object. The number of characters written so far is assigned to a property name ``sprintf_n``.</td></tr>
 <tr><td>s, S, t</td>       <td>Display a string. The argument is a pointer to char. Characters are displayed until a '\0' is encountered, or until the number of characters indicated by the precision have been displayed. S forces all uppercase, t forces all lowercase while s does no case modification.</td></tr>
-<tr><td>p</td>             <td>Display a pointer (to any type). The representation is implementation dependent.</td></tr>
+<tr><td>p</td>             <td>Does nothing, returns an empty string.</td></tr>
 <tr><td>%</td>             <td>Display the % character.</td></tr>
 </table>
 
@@ -105,7 +102,7 @@ the string prototype method ``printf``:
     // we can also do Javascript objects
     var obj = { a: 1, b: 'A string', c: 444.1 };
 
-    var text = sprintf('This is an object: %s\n', obj);
+    var text = sprintf('This is an object: %j\n', obj);
     text.printf();
 
     // if the first argument after the format string is an array, and there are no more
@@ -135,14 +132,8 @@ output to standard out:
     var text = 'There are %d geese';
     text.printf(22);
 
-Internally the exactly the same processing takes place. Therefore you may
+Internally the exact the same processing takes place. Therefore you may
 decide freely which syntax you like better.
-
-Note
-====
-
-Though this code no longer uses JavaScript Regular Expressions, I would still not use it in anything that is called
-a massively in short period of time. It's a lot of work to pretty-print some data.
 
 License
 =======
