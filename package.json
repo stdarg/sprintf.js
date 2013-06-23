@@ -1,10 +1,10 @@
 {
       "name" : "sprintf.js"
     , "version" : "0.1.0"
-    , "description" : "This library does provide an almost complete reimplementation of the sprintf function known from the standard c library."
-    , "tags" : [ "utilities", "JavaScript", "node.js", "validation", "type", "checking" ]
+    , "description" : "This library does provide an almost complete implementation of the printf and sprintf functions from the standard C library."
+    , "tags" : [ "utilities", "output", "log", "printf", "sprintf" ]
     , "author" : "Edmond Meinfelder <git@stdarg.com>"
-    , "maintainers" : "Edmond Meinfelder <edmond@stdarg.com>"
+    , "maintainers" : "Edmond Meinfelder <git@stdarg.com>"
     , "homepage" : "https://github.com/stdarg/sprintf.js"
     , "repository" : {
           "type" : "git"
