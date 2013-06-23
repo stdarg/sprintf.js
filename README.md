@@ -8,7 +8,7 @@ This implementation of sprintf.js is no longer from https://github.com/jakobwest
 A new parser has been written enabling the format descriptors to be a bit more "C"-like.
 
 Please note sprintf.js adds the functions ``printf`` and ``sprintf`` to the global
-scope and places ``printf`` and a ``sprintf`` onto the string prototype.
+scope and onto the string prototype.
 
 Installation
 ============
