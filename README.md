@@ -4,11 +4,12 @@ A node.js sprintf implementation
 Note
 ====
 
-This implementation of sprintf.js is no longer from https://github.com/jakobwesthoff/sprintf.js
-A new parser has been written enabling the format descriptors to be a bit more "C"-like.
+This implementation of sprintf.js is no longer from
+https://github.com/jakobwesthoff/sprintf.js A new parser has been written
+enabling the format descriptors to be a bit more "C"-like.
 
-Please note sprintf.js adds the functions ``printf`` and ``sprintf`` to the global
-scope and onto the string prototype.
+Please note sprintf.js adds the functions ``printf`` and ``sprintf`` to the
+global scope and onto the string prototype.
 
 Installation
 ============
@@ -18,16 +19,17 @@ Installation
 Capabilities
 ============
 
-This library provides an almost complete implementation of the ``sprintf`` and ``printf``
-functions from the standard C library. All options from the C format strings are valid,
-however where there is no corresponding functionality in JavaScript, nothing happens -
-it's not error, but there is no functionality.
+This library provides an almost complete implementation of the ``sprintf`` and
+``printf`` functions from the standard C library. All options from the C format
+strings are valid, however where there is no corresponding functionality in
+JavaScript, nothing happens - it's not error, but there is no functionality.
 
 The format string is of the form:
 
     % [flags] [field_width] [.precision] [length_modifier] conversion_character
 
-Components in brackets [] are optional. The minimum is a % and a conversion character (e.g. %d).
+Components in brackets \[\] are optional. The minimum is a % and a conversion
+character (e.g. %d).
 
 ### Flags
 Flags can be in any order.
@@ -95,7 +97,7 @@ the string prototype method ``printf``:
 
     require('sprintf');
 
-    var text = sprintf('Hello %%s, aiformatted number is: %3.2f\n', 22/7);
+    var text = sprintf('Hello %%s, a formatted number is: %3.2f\n', 22/7);
     process.stdout.write(text);
     printf(text, 'Jakob');   // The format string is the text in the string object.
 
@@ -111,8 +113,8 @@ the string prototype method ``printf``:
     var text = sprintf('I have %d %s%s.', values);
 
 
-After loading the sprintf.js Javascript file, the global functions ``printf`` and
-``sprintf`` are registered and ready for use. Further, the String object is
+After loading the sprintf.js Javascript file, the global functions ``printf``
+and ``sprintf`` are registered and ready for use. Further, the String object is
 extended with ``printf`` mnd ``sprintf`` methods.
 
 You may either use the global function ``sprintf`` which returns the newly
@@ -121,19 +123,20 @@ arguments:
 
     var formatted = sprintf('The number is %.2f', number);
 
-You may use the string prototype's ``sprintf`` method directly on the format string::
+You may use the string prototype's ``sprintf`` method directly on the format
+string::
 
     var formatted = 'The number is %.2f'.sprintf(number);
 
-You can use the string prototype's ``printf`` to display the formatted
-output to standard out:
+You can use the string prototype's ``printf`` to display the formatted output to
+standard out:
 
     'I like %s, a lot'.printf('ducks');
     var text = 'There are %d geese';
     text.printf(22);
 
-Internally the exact the same processing takes place. Therefore you may
-decide freely which syntax you like better.
+Internally the exact the same processing takes place. You may decide which
+syntax you like better.
 
 License
 =======
